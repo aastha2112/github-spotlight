@@ -1,0 +1,13 @@
+@import './loader.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.container {
+  /* width: 250px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}

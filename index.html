@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body class="h-screen">
+    <!-- searchPage -->
+
+    <div
+      class="searchPage h-screen bg-black text-white flex justify-center"
+      id="searchPage"
+    >
+      <div class="container flex flex-col">
+        <img class="h-32" src="/github_logo.svg" alt="github_logo" />
+        <h2 class="my-8 text-4xl">Find your GitHub profile</h2>
+        <div class="flex flex-col">
+          <form id="userSearchForm" action="#">
+            <input
+              id="userInput"
+              class="h-20 text-white text-3xl px-3 py-0.5 rounded-lg bg-darkGreen focus:outline-none focus:outline-[#1e293b] border-slate-800"
+              type="text"
+              autocomplete="off"
+            />
+          </form>
+
+          <ul
+            id="userList"
+            class="flex flex-col h-[220px] overflow-auto mt-3.5"
+          ></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- loader page -->
+    <div
+      class="flex flex-1 items-center justify-center h-screen hidden"
+      id="loader"
+    >
+      <div class="loader"></div>
+    </div>
+
+    <!-- User Profile -->
+
+    <div class="h-screen bg-black flex flex-col justify-center items-center">
+      <div class="flex items-center justify-center flex-col">
+        <img
+          id="userAvatar"
+          class="h-32 rounded-full aspect-square border-white border-2 px-3 py-3"
+          src="https://images.unsplash.com/photo-1473830394358-91588751b241?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D"
+          alt="Aastha"
+        />
+        <h1 class="text-white px-3 py-5 text-4xl" id="fullName">
+          Aastha Lakhanpal
+        </h1>
+        <p id="userBio" class="text-white px-3 text-xl">User Bio</p>
+        <a href="#" class="text-emerald-800 px-3 py-5 text-2xl" id="userID"
+          >@7aastha</a
+        >
+
+        <div class="flex justify-between px-3 py-7">
+          <div id="userCompany" class="flex justify-center items-center">
+            <img class="h-4 px-3" src="/briefcase.svg" alt="Office" />
+            <p class="text-white" id="userProfession">
+              Berozgaar nalla at home
+            </p>
+          </div>
+          <div id="userOrigin" class="flex justify-center items-center px-6">
+            <img class="h-4 px-3" src="/location.svg" alt="Country" />
+            <p id="userLocation" class="text-white">India</p>
+          </div>
+          <div class="flex justify-center items-center">
+            <img class="h-4 px-3" src="/calender.svg" alt="Date of Joining" />
+            <p class="text-white" id="joiningDate">Joined 04 July, 2016</p>
+          </div>
+        </div>
+
+        <div class="flex justify-between py-6">
+          <div
+            class="text-white px-4 py-3 rounded bg-darkGreen flex flex-col justify-center items-center"
+          >
+            <p class="text-3xl" id="userRepos">23</p>
+            <h3>REPOSITORIES</h3>
+          </div>
+          <div
+            class="text-white px-4 py-3 rounded bg-darkGreen mx-16 flex flex-col justify-center items-center"
+          >
+            <p class="text-3xl" id="userFollowers">977</p>
+            <h3>FOLLOWERS</h3>
+          </div>
+          <div
+            class="text-white px-4 py-3 rounded bg-darkGreen flex flex-col justify-center items-center"
+          >
+            <p class="text-3xl" id="userFollowing">81</p>
+            <h3>FOLLOWING</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>
