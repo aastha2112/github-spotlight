@@ -3,7 +3,8 @@ function apiGenerator(api) {
     fetch(api, {
       method: "GET",
       headers: {
-        Authorization: `Bearer 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`,
+        Authorization:
+          "Bearer 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",
         "X-GitHub-Api-Version": "2022-11-28",
       },
     })

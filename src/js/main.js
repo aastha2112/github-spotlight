@@ -26,32 +26,6 @@ const searchPage = document.getElementById("searchPage");
 
 let isLoading = false;
 
-const userData = [
-  {
-    login: "aastha2112",
-    id: 138298132,
-    node_id: "U_kgDOCD5DFA",
-    avatar_url: "https://avatars.githubusercontent.com/u/138298132?v=4",
-    gravatar_id: "",
-    url: "https://api.github.com/users/aastha2112",
-    html_url: "https://github.com/aastha2112",
-    followers_url: "https://api.github.com/users/aastha2112/followers",
-    following_url:
-      "https://api.github.com/users/aastha2112/following{/other_user}",
-    gists_url: "https://api.github.com/users/aastha2112/gists{/gist_id}",
-    starred_url:
-      "https://api.github.com/users/aastha2112/starred{/owner}{/repo}",
-    subscriptions_url: "https://api.github.com/users/aastha2112/subscriptions",
-    organizations_url: "https://api.github.com/users/aastha2112/orgs",
-    repos_url: "https://api.github.com/users/aastha2112/repos",
-    events_url: "https://api.github.com/users/aastha2112/events{/privacy}",
-    received_events_url:
-      "https://api.github.com/users/aastha2112/received_events",
-    type: "User",
-    site_admin: false,
-    score: 1,
-  },
-];
 function userProfile(userName) {
   isLoading = true;
 
@@ -74,11 +48,13 @@ function userProfile(userName) {
     renderUserId(userData.login);
     renderJoinedDate(userData.created_at);
     renderUserBio(userData.bio);
-    console.log(userData);
   });
 }
 
 function fetchAndRenderSearchUsers(userName) {
+  if (!userName) {
+    return;
+  }
   getUsersByUserName(userName).then((users) => {
     const topTenUsers = users.items.slice(0, 10);
     userList.innerHTML = generateUsersList(topTenUsers);
@@ -89,6 +65,7 @@ function fetchAndRenderSearchUsers(userName) {
     selectUserBtns.forEach((user) => {
       user.addEventListener("click", (name) => {
         const loginId = name.target.dataset.userName;
+
         userProfile(loginId);
       });
     });
@@ -102,6 +79,33 @@ userInput.addEventListener("input", (event) => {
 
 userSearchForm.addEventListener("submit", () => {
   const userName = userInput.value;
-
   userProfile(userName);
+});
+
+let currentIndex = null;
+document.addEventListener("keydown", (event) => {
+  const selectUserBtns = Array.from(
+    document.getElementsByClassName("selectUser")
+  );
+
+  if (event.key === "ArrowUp") {
+    if (!currentIndex || currentIndex === 0) {
+      currentIndex = selectUserBtns.length - 1;
+    } else {
+      currentIndex -= 1;
+    }
+    if (selectUserBtns.length > 0) {
+      selectUserBtns[currentIndex].focus();
+    }
+  } else if (event.key === "ArrowDown") {
+    if (currentIndex === null || currentIndex === selectUserBtns.length - 1) {
+      currentIndex = 0;
+    } else {
+      currentIndex += 1;
+    }
+
+    if (selectUserBtns.length > 0) {
+      selectUserBtns[currentIndex].focus();
+    }
+  }
 });

@@ -2,7 +2,7 @@ export function generateUsersList(users) {
   return users
     .map((user) => {
       return `<li class="flex m-1 border-b-2 border-[#1e293b] p-2 rounded-sm">
-    <button class=" selectUser flex-1 flex items-stretch">
+    <button class=" selectUser flex-1 flex items-stretch" data-user-name='${user.login}'>
       <img class="h-16 w-16 rounded-full" src="${user.avatar_url}" alt="${user.login}" data-user-name='${user.login}'> 
       <p class="flex flex-1 items-center justify-left pl-6 text-2xl" data-user-name='${user.login}'>${user.login}</p>
 
@@ -14,11 +14,15 @@ export function generateUsersList(users) {
 
 export function toggleLoader(state) {
   const loader = document.getElementById("loader");
+  const userProfile = document.getElementById("userProfile");
+  const searchPage = document.getElementById("searchPage");
 
   if (state) {
     loader.classList.remove("hidden");
+    searchPage.classList.add("hidden");
   } else {
     loader.classList.add("hidden");
+    userProfile.classList.remove("hidden");
   }
 }
 
@@ -40,8 +44,6 @@ export function renderUserProfession(company) {
   } else {
     profession.textContent = company;
   }
-
-  // console.log(profession);
 }
 
 export function renderUserOrigin(location) {
@@ -78,7 +80,6 @@ export function renderUserId(userID) {
 export function renderJoinedDate(date) {
   const joinDate = document.getElementById("joiningDate");
   const dateOfJoining = new Date(date);
-  // const joiningYear = dateOfJoining.getFullYear();
   const joiningDate = dateOfJoining.toDateString().slice(4);
 
   joinDate.textContent = `Joined ${joiningDate}`;
