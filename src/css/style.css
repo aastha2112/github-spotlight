@@ -1,13 +1,23 @@
-@import './loader.css';
+@import "./loader.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 .container {
   /* width: 250px; */
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
+.formDiv {
+  width: 250px;
+}
+
+#userInput {
+  width: 50%;
+}
+
+.ghLogo {
+  width: 320px;
 }

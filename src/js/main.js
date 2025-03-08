@@ -18,11 +18,11 @@ import {
 // 1 - Select Input
 // 2 - Add EventListener on Input
 // 3 - Get Value from input when user types anything
-
 const userInput = document.getElementById("userInput");
 const userList = document.getElementById("userList");
 const userSearchForm = document.getElementById("userSearchForm");
 const searchPage = document.getElementById("searchPage");
+const backBtn = document.getElementById("backBtn");
 
 let isLoading = false;
 
